@@ -1,0 +1,162 @@
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+  min-height: calc(100vh - 70px);
+  padding-top: 120px;  /* EXTRA SAFE SPACE */
+  display: flex;
+  align-items: center;
+}
+
+/* =========================
+   HERO CONTENT LAYOUT
+========================= */
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* gap: 80px; */
+  width: 100%;
+}
+
+/* =========================
+   LEFT TEXT AREA
+========================= */
+
+.hero-text {
+  max-width: 600px;
+  animation: slideLeft 1s ease forwards;
+}
+
+.intro {
+  color: #61dafb;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.hero-text span {
+  color: #61dafb;
+}
+
+.desc {
+  margin: 20px 0;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.buttons a {
+  padding: 12px 26px;
+  background: #61dafb;
+  color: #000;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.buttons a:hover {
+  transform: translateY(-2px);
+}
+
+.buttons .outline {
+  background: transparent;
+  border: 2px solid #61dafb;
+  color: #61dafb;
+}
+
+/* =========================
+   RIGHT IMAGE AREA
+========================= */
+
+.hero-image {
+  position: relative;
+  width: 320px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ACTUAL PROFILE IMAGE */
+.profile-img {
+  position: relative;
+  height: 360px;
+  width: auto;
+  object-fit: contain;
+  z-index: 2;
+  border-radius: 18px;
+  transition: 0.4s;
+}
+
+.profile-img:hover {
+  scale: 1.03;
+  box-shadow: 0 0 25px rgba(97, 218, 251, 0.6);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 900px) {
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .hero-image {
+    width: 260px;
+    height: 260px;
+  }
+
+  .hero-image img {
+    height: 320px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-bottom: 60px;
+    padding-top: 160px;
+  }
+    .hero-text {
+    margin-top: 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+  .profile-img {
+    height: 260px;     /* DO NOT exceed */
+  }
+    .buttons {
+    flex-direction: column;  /* MAIN FIX */
+    align-items: center;
+  }
+
+  .buttons a {
+    width: 220px;
+    text-align: center;
+  }
+}

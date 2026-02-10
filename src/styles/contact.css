@@ -1,0 +1,26 @@
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: #a6255d;
+  font-size: 1.1rem;
+}
+
+.contact-icon {
+  color: #61dafb;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.contact-text {
+  max-width: 100%;
+  white-space: nowrap;       /* single line */
+  overflow: hidden;          /* creen vittu pogama */
+  text-overflow: ellipsis;   /*show */
+}
+.contact-text1{
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

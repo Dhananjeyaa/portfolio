@@ -1,0 +1,51 @@
+.projects {
+  display: grid;
+  gap: 30px;
+}
+
+/* Card */
+.project-card {
+  background: #11162a;
+  padding: 25px;
+  border-radius: 12px;
+  transition: 0.3s;
+
+  /*IMPORTANT */
+  color: #e5e7eb; /* light text for all content */
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(97, 218, 251, 0.3);
+}
+
+/* Title */
+.project-card h3 {
+  color: #61dafb;
+  margin-bottom: 6px;
+}
+
+/* Stack text */
+.stack {
+  display: block;
+  font-size: 0.9rem;
+  color: #9ca3af; /* light gray */
+  margin-bottom: 10px;
+}
+
+/* Description */
+.project-card p {
+  margin: 15px 0;
+  color: #d1d5db;
+}
+
+/* Features list */
+.project-card ul {
+  margin-left: 20px;
+  line-height: 1.6;
+  padding-left: 0;
+}
+
+.project-card li {
+  color: #a7f3d0;
+}

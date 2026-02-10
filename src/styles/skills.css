@@ -1,0 +1,38 @@
+.section-title {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #61dafb;
+}
+
+.Exp-Card ul {
+  margin-left: 20px;
+  line-height: 1.6;
+  padding-left: 0;
+}
+
+.Exp-Card li {
+  color: #3413c9;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.skill-card {
+  padding: 18px;
+  background: #11162a;
+  color: var(--hover-color);
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.skill-card:hover {
+  color: var(--hover-color);
+  box-shadow: 0 0 15px var(--hover-color);
+  transform: translateY(-5px);
+}
