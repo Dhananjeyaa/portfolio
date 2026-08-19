@@ -1,9 +1,6 @@
-// import { useEffect, useState } from "react";
-// import { motion } from "framer-motion";
-// import "./index.css";
+import "./index.css";
 
-import "./styles/theme.css";
-
+import Background from "./components/Background.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
@@ -17,6 +14,7 @@ export default function App() {
 
   return (
     <>
+      <Background />
       <Navbar/>
       <Hero/>
       <About/>
@@ -28,8 +26,3 @@ export default function App() {
     </>
   );
 }
-
-
-
-
-//export default App

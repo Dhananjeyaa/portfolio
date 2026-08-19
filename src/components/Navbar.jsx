@@ -7,7 +7,7 @@ export default function Navbar(){
     return(
         <nav className="navbar">
          <div className="nav-container">
-        <div className="logo">Arunachalam</div>
+        <div className="logo">Arun<span>achalam</span></div>
 
         {/* Desktop Menu */}
         <ul className="nav-links">

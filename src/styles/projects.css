@@ -1,51 +1,89 @@
+/* =========================
+   PREMIUM PROJECTS PORTFOLIO
+========================= */
+
 .projects {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
+  padding: 20px 0;
 }
 
-/* Card */
+/* Card overrides for Project Cards */
 .project-card {
-  background: #11162a;
-  padding: 25px;
-  border-radius: 12px;
-  transition: 0.3s;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
 
-  /*IMPORTANT */
-  color: #e5e7eb; /* light text for all content */
+/* Add a subtle glow inside top edge */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-secondary), transparent);
+  opacity: 0.5;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 20px rgba(97, 218, 251, 0.3);
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--neon-primary);
+  box-shadow: 0 15px 35px var(--neon-glow);
 }
 
 /* Title */
 .project-card h3 {
-  color: #61dafb;
-  margin-bottom: 6px;
+  font-size: 1.6rem;
+  color: var(--text-main);
+  margin-bottom: 10px;
 }
 
-/* Stack text */
-.stack {
-  display: block;
-  font-size: 0.9rem;
-  color: #9ca3af; /* light gray */
-  margin-bottom: 10px;
+/* Stack styling inside the glass UI */
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stack-tag {
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  color: var(--neon-secondary);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* Description */
 .project-card p {
-  margin: 15px 0;
-  color: #d1d5db;
+  margin: 10px 0 20px 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  flex-grow: 1;
 }
 
 /* Features list */
 .project-card ul {
-  margin-left: 20px;
-  line-height: 1.6;
-  padding-left: 0;
+  list-style: none;
 }
 
 .project-card li {
-  color: #a7f3d0;
+  margin-bottom: 8px;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.project-card li span {
+  color: var(--neon-primary);
+  font-weight: bold;
 }

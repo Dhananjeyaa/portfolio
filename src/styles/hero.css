@@ -1,24 +1,25 @@
 /* =========================
-   HERO SECTION
+   PREMIUM HERO SECTION
 ========================= */
 
 .hero {
-  min-height: calc(100vh - 70px);
-  padding-top: 120px;  /* EXTRA SAFE SPACE */
+  min-height: 100vh;
+  padding-top: 100px;  
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 10;
 }
-
-/* =========================
-   HERO CONTENT LAYOUT
-========================= */
 
 .hero-content {
   display: flex;
   align-items: center;
-  justify-content: center;
-  /* gap: 80px; */
+  justify-content: space-between;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  gap: 40px;
 }
 
 /* =========================
@@ -26,97 +27,246 @@
 ========================= */
 
 .hero-text {
-  max-width: 600px;
-  animation: slideLeft 1s ease forwards;
+  max-width: 650px;
+  z-index: 2;
 }
 
-.intro {
-  color: #61dafb;
-  margin-bottom: 10px;
+.hero-text .intro {
+  color: var(--neon-secondary);
+  font-size: 1.2rem;
   font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .hero-text h1 {
-  font-size: 3rem;
-  line-height: 1.2;
-}
-
-.hero-text span {
-  color: #61dafb;
-}
-
-.desc {
-  margin: 20px 0;
-  line-height: 1.6;
-  opacity: 0.85;
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 16px;
 }
 
 /* =========================
-   BUTTONS
+   DYNAMIC ROLE ROTATOR
+========================= */
+
+.dynamic-role-container {
+  display: flex;
+  align-items: center;
+  min-height: 70px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.dynamic-role {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: left;
+  display: inline-block;
+}
+
+.hero-text .desc {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 40px;
+  max-width: 550px;
+}
+
+/* =========================
+   BUTTON CONTAINER
 ========================= */
 
 .buttons {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
-.buttons a {
-  padding: 12px 26px;
-  background: #61dafb;
-  color: #000;
-  border-radius: 30px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.buttons a:hover {
-  transform: translateY(-2px);
-}
-
-.buttons .outline {
-  background: transparent;
-  border: 2px solid #61dafb;
-  color: #61dafb;
-}
+/* Base button styles applied via global .btn-primary / .btn-outline from index.css */
 
 /* =========================
-   RIGHT IMAGE AREA
+   RIGHT IMAGE AREA (Revamped)
 ========================= */
 
 .hero-image {
   position: relative;
-  width: 320px;
+  width: 420px;
   height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* ACTUAL PROFILE IMAGE */
-.profile-img {
-  position: relative;
-  height: 360px;
-  width: auto;
-  object-fit: contain;
   z-index: 2;
-  border-radius: 18px;
-  transition: 0.4s;
 }
 
-.profile-img:hover {
-  scale: 1.03;
-  box-shadow: 0 0 25px rgba(97, 218, 251, 0.6);
+/* Background blur glow */
+.hero-image::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.4) 0%, rgba(139, 92, 246, 0.4) 50%, transparent 70%);
+  filter: blur(60px);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Outer wrapper with neon gradient border */
+.hero-image-wrapper {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  padding: 6px; /* border thickness */
+  background: linear-gradient(135deg, var(--neon-secondary) 0%, var(--neon-primary) 100%);
+  z-index: 2;
+  box-shadow: 0 0 25px rgba(14, 165, 233, 0.35), 
+              0 0 50px rgba(139, 92, 246, 0.25),
+              inset 0 0 15px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.5s ease;
+}
+
+/* Glowing ring behind the wrapper */
+.hero-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--neon-secondary) 0%, var(--neon-primary) 100%);
+  opacity: 0.6;
+  filter: blur(12px);
+  z-index: -1;
+}
+
+/* Spinning outer dashed border for interactive premium effect */
+.glowing-ring {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  border-radius: 50%;
+  border: 2px dashed rgba(14, 165, 233, 0.45);
+  animation: spin 25s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Container to mask the image to circle */
+.profile-img-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-space);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--bg-space); /* offsets image and makes gradient border pop */
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 5%;
+  transform: scale(1.02);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effects */
+.hero-image-wrapper:hover {
+  box-shadow: 0 0 35px rgba(14, 165, 233, 0.5), 
+              0 0 70px rgba(139, 92, 246, 0.4);
+}
+
+.hero-image-wrapper:hover .profile-img {
+  transform: scale(1.08);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* =========================
    RESPONSIVE DESIGN
 ========================= */
 
+@media (max-width: 1024px) {
+  .hero-text h1 { 
+    font-size: 3.2rem; 
+  }
+  .dynamic-role {
+    font-size: 2rem;
+  }
+  .dynamic-role-container {
+    min-height: 60px;
+  }
+  .hero-image {
+    width: 360px;
+    height: 360px;
+  }
+  .hero-image-wrapper {
+    width: 310px;
+    height: 310px;
+  }
+}
+
 @media (max-width: 900px) {
+  .hero {
+    padding-top: 120px;
+    padding-bottom: 40px;
+  }
+
   .hero-content {
     flex-direction: column-reverse;
     text-align: center;
     gap: 40px;
+    padding: 0 30px;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.8rem;
+  }
+
+  .dynamic-role-container {
+    justify-content: center;
+    min-height: 80px;
+  }
+
+  .dynamic-role {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .hero-text .desc {
+    margin-bottom: 30px;
+    max-width: 600px;
   }
 
   .buttons {
@@ -124,39 +274,63 @@
   }
 
   .hero-image {
-    width: 260px;
-    height: 260px;
-  }
-
-  .hero-image img {
+    width: 320px;
     height: 320px;
   }
 
+  .hero-image-wrapper {
+    width: 280px;
+    height: 280px;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .hero {
-    min-height: auto;
-    padding-bottom: 60px;
-    padding-top: 160px;
+    padding-top: 100px;
+    padding-bottom: 40px;
   }
-    .hero-text {
-    margin-top: 20px;
+  
+  .hero-content {
+    padding: 0 20px;
+    gap: 30px;
   }
 
   .hero-text h1 {
     font-size: 2.2rem;
   }
-  .profile-img {
-    height: 260px;     /* DO NOT exceed */
-  }
-    .buttons {
-    flex-direction: column;  /* MAIN FIX */
-    align-items: center;
+
+  .dynamic-role-container {
+    min-height: 100px;
   }
 
+  .dynamic-role {
+    font-size: 1.5rem;
+  }
+  
+  .hero-text .desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .hero-image {
+    width: 280px;
+    height: 280px;
+  }
+
+  .hero-image-wrapper {
+    width: 240px;
+    height: 240px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
   .buttons a {
-    width: 220px;
-    text-align: center;
+    width: 100%;
   }
 }

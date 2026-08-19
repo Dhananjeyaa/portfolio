@@ -1,9 +1,4 @@
-.section-title {
-  font-size: 2.2rem;
-  margin-bottom: 40px;
-  color: #61dafb;
-}
-
+/* Legacy definitions kept to ensure no breaking visual changes if used in Experience */
 .Exp-Card ul {
   margin-left: 20px;
   line-height: 1.6;
@@ -11,28 +6,57 @@
 }
 
 .Exp-Card li {
-  color: #3413c9;
+  color: #3413c9; /* To be refactored */
 }
+
+/* =========================
+   PREMIUM SKILLS
+========================= */
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
+/* Card overrides for Skill Cards */
 .skill-card {
-  padding: 18px;
-  background: #11162a;
-  color: var(--hover-color);
-  border-radius: 10px;
+  padding: 24px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  font-weight: bold;
-  transition: 0.3s;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  color: var(--text-main);
+  /* Fallback glow color if undefined */
+  --local-glow: var(--hover-color, var(--neon-primary));
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, var(--local-glow), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .skill-card:hover {
-  color: var(--hover-color);
-  box-shadow: 0 0 15px var(--hover-color);
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.05);
+  border-color: var(--local-glow);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px var(--local-glow);
+  color: #fff;
+}
+
+.skill-card:hover::before {
+  opacity: 0.15;
 }
